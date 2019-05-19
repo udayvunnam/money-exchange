@@ -12,4 +12,8 @@ export class ConvertHistoryComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {}
+
+  trackByFn(index, item) {
+    return item.id;
+  }
 }

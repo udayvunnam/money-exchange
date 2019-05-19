@@ -5,4 +5,5 @@ export interface ConvertHistory {
   convertedValue: number;
   exchangeRate: number;
   created: string;
+  id: string;
 }
