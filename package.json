@@ -1,6 +1,26 @@
 {
   "name": "money-exchange",
-  "version": "0.0.0",
+  "version": "1.0.0",
+  "license": "MIT",
+  "description": "PWA for currency conversions in real time and historical usage trends.",
+  "author": {
+    "name": "Uday Vunnam",
+    "email": "uday4vunnam@gmail.com"
+  },
+  "homepage": "https://github.com/udayvunnam/money-exchange",
+  "bugs": "https://github.com/udayvunnam/money-exchange/issues",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/udayvunnam/money-exchange.git"
+  },
+  "keywords": [
+    "angular",
+    "angular7",
+    "angular-material",
+    "money",
+    "exchange",
+    "exchange-rates"
+  ],
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
