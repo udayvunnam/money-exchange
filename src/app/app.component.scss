@@ -1,0 +1,23 @@
+.app-container {
+  margin: 0 64px;
+}
+
+.header {
+  padding: 16px;
+  .branding {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    .app-name {
+      margin: 0 4px;
+    }
+    .title-small {
+      font-weight: 300;
+    }
+  }
+}
+
+.body-container {
+  text-align: center;
+  margin-top: 48px;
+}

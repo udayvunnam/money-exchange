@@ -5,14 +5,14 @@
 // have to load a single css file for Angular Material in your app.
 @include mat-core();
 
-$xng-app-primary: mat-palette($mat-teal);
-$xng-app-accent: mat-palette($mat-green, A200, A100, A400);
-$xng-app-warn: mat-palette($mat-red);
-$xng-light-theme: mat-light-theme($xng-app-primary, $xng-app-accent, $xng-app-warn);
-$xng-dark-theme: mat-dark-theme($xng-app-primary, $xng-app-accent, $xng-app-warn);
+$mx-app-primary: mat-palette($mat-teal);
+$mx-app-accent: mat-palette($mat-green, A200, A100, A400);
+$mx-app-warn: mat-palette($mat-red);
+$mx-light-theme: mat-light-theme($mx-app-primary, $mx-app-accent, $mx-app-warn);
+$mx-dark-theme: mat-dark-theme($mx-app-primary, $mx-app-accent, $mx-app-warn);
 
-@include angular-material-theme($xng-light-theme);
+@include angular-material-theme($mx-light-theme);
 
-.xng-dark-theme {
-  @include angular-material-theme($xng-dark-theme);
+.mx-dark-theme {
+  @include angular-material-theme($mx-dark-theme);
 }
