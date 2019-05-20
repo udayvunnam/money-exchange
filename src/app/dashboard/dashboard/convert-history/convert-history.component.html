@@ -1,43 +1,40 @@
-<section
-  class="conversion-history-container"
-  *ngIf="convertionHistory && convertionHistory.length > 0"
->
-  <div role="list">
-    <h3 matSubheader class="recent-label">Recent conversions</h3>
-    <mat-card
-      role="listitem"
-      *ngFor="let conversion of convertionHistory; trackBy: trackByFn"
-      class="history-item"
-      (click)="repeatConversion(conversion)"
-    >
-      <div fxLayout="row" fxLayoutGap="24px" fxLayoutAlign="start center">
+<section class="conversion-history-container" *ngIf="conversionHistory && conversionHistory.length > 0" role="list">
+  <h3 matSubheader class="recent-label">Recent conversions</h3>
+  <mat-card role="listitem" *ngFor="let conversion of conversionHistory; trackBy: trackByFn" class="history-item">
+    <div fxLayout="row" fxLayoutAlign="space-between center">
+      <div
+        fxLayout="row"
+        fxLayoutAlign.gt-xs="start center"
+        fxLayoutGap="48px"
+        fxLayoutGap.xs="12px"
+        fxLayout.xs="column"
+      >
         <div class="from-amount">
           <span class="amount">{{ conversion.value | number: '1.0-6' }}</span>
           <span class="currency-symbol">{{ conversion.from }}</span>
         </div>
         <mat-icon>compare_arrows</mat-icon>
         <div class="to-amount">
-          <span class="amount">{{
-            conversion.convertedValue | number: '1.0-6'
-          }}</span>
+          <span class="amount">{{ conversion.convertedValue | number: '1.0-6' }}</span>
           <span class="currency-symbol"> {{ conversion.to }}</span>
         </div>
-        <label class="exchange-rate">
-          at exchange rate of
-          {{ conversion.exchangeRate | number: '1.0-6' }}</label
-        >
-        <button
-          mat-icon-button
-          color="primary"
-          matTooltip="repeat conversion"
-          class="repeat-icon"
-        >
-          <mat-icon>repeat</mat-icon>
-        </button>
       </div>
-      <label class="convert-date">{{
-        conversion.created | date: 'medium'
-      }}</label>
-    </mat-card>
-  </div>
+      <button
+        mat-icon-button
+        color="primary"
+        matTooltip="repeat conversion"
+        class="repeat-icon"
+        (click)="repeatConversion(conversion)"
+      >
+        <mat-icon>repeat</mat-icon>
+      </button>
+    </div>
+    <div>
+      <label class="exchange-rate">
+        Exchange rate
+        {{ conversion.exchangeRate | number: '1.0-6' }}</label
+      >
+      <label class="convert-date">{{ conversion.created | date: 'medium' }}</label>
+    </div>
+  </mat-card>
 </section>

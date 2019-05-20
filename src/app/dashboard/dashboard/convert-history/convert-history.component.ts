@@ -1,11 +1,4 @@
-import {
-  Component,
-  OnInit,
-  Input,
-  ChangeDetectionStrategy,
-  Output,
-  EventEmitter
-} from '@angular/core';
+import { Component, OnInit, Input, ChangeDetectionStrategy, Output, EventEmitter } from '@angular/core';
 import { ConvertHistory, ConvertInput } from 'src/app/shared/models';
 
 @Component({
@@ -15,7 +8,7 @@ import { ConvertHistory, ConvertInput } from 'src/app/shared/models';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ConvertHistoryComponent implements OnInit {
-  @Input() convertionHistory: ConvertHistory[];
+  @Input() conversionHistory: ConvertHistory[];
   @Output() repeat: EventEmitter<ConvertInput> = new EventEmitter();
 
   constructor() {}

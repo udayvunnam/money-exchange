@@ -1,12 +1,9 @@
 <div class="dashboard-container">
   <mx-convert
     [currencyList]="currencyList"
-    [convertInput]="convertInput"
+    [repeatConversion]="repeatConversion"
     [convertOutput]="convertOutput"
     (convert)="convert($event)"
   ></mx-convert>
-  <mx-convert-history
-    [convertionHistory]="convertionHistory"
-    (repeat)="repeat($event)"
-  ></mx-convert-history>
+  <mx-convert-history [conversionHistory]="conversionHistory" (repeat)="repeat($event)"></mx-convert-history>
 </div>

@@ -9,18 +9,8 @@ import {
   OnChanges,
   SimpleChanges
 } from '@angular/core';
-import {
-  FormGroup,
-  FormBuilder,
-  Validators,
-  AbstractControl
-} from '@angular/forms';
-import {
-  Currency,
-  ConvertHistory,
-  ConvertInput,
-  ConvertOutput
-} from 'src/app/shared/models';
+import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/forms';
+import { Currency, ConvertInput, ConvertOutput } from 'src/app/shared/models';
 import { DashboardService } from '../../dashboard.service';
 import { MatSnackBar } from '@angular/material';
 import { MxValidators } from 'src/app/shared/validators/mx-validators';
@@ -32,18 +22,14 @@ import { MxValidators } from 'src/app/shared/validators/mx-validators';
 })
 export class ConvertComponent implements OnInit, OnChanges {
   @Input() currencyList: Currency[];
-  @Input() convertInput: ConvertInput;
+  @Input() repeatConversion: ConvertInput;
   @Input() convertOutput: ConvertOutput;
 
   @Output() convert: EventEmitter<ConvertInput> = new EventEmitter();
 
   conversionForm: FormGroup;
 
-  constructor(
-    private dashboardService: DashboardService,
-    private fb: FormBuilder,
-    private snackBar: MatSnackBar
-  ) {}
+  constructor(private fb: FormBuilder, private snackBar: MatSnackBar) {}
 
   ngOnInit() {
     this.createForm();
@@ -53,12 +39,9 @@ export class ConvertComponent implements OnInit, OnChanges {
   createForm() {
     this.conversionForm = this.fb.group(
       {
-        from: [this.convertInput.from, [Validators.required]],
-        to: [this.convertInput.to, [Validators.required]],
-        value: [
-          this.convertInput.value,
-          [Validators.required, MxValidators.number]
-        ]
+        from: [this.repeatConversion.from, [Validators.required]],
+        to: [this.repeatConversion.to, [Validators.required]],
+        value: [this.repeatConversion.value, [Validators.required, MxValidators.number]]
       },
       { validators: MxValidators.notEqual('from', 'to') }
     );
@@ -80,11 +63,9 @@ export class ConvertComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    if (
-      changes.convertInput &&
-      changes.convertInput.previousValue !== changes.convertInput.currentValue
-    ) {
+    if (changes.repeatConversion && changes.repeatConversion.previousValue !== changes.repeatConversion.currentValue) {
       this.createForm();
+      window.scroll(0, 0);
     }
   }
 
@@ -93,13 +74,13 @@ export class ConvertComponent implements OnInit, OnChanges {
     if (form.invalid && (isSubmitted || form.dirty)) {
       const amount = form.get('value');
       if (amount.hasError('required')) {
-        errorMsg = 'Amount is required';
+        errorMsg = `'Amount' is required`;
       } else if (amount.hasError('number')) {
         errorMsg = 'Please enter a valid Amount';
       } else if (form.get('from').hasError('required')) {
-        errorMsg = 'From currency selection is required';
+        errorMsg = `'From Currency' selection is required`;
       } else if (form.get('to').hasError('required')) {
-        errorMsg = 'To currency selection is required';
+        errorMsg = `'To Currency' selection is required`;
       } else if (form.hasError('equal')) {
         errorMsg = 'Conversion between same currencies! Are you sure ?';
       }

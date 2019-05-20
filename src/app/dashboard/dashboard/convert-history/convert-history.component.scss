@@ -1,6 +1,5 @@
 .history-item {
   margin-bottom: 16px;
-  cursor: pointer;
 }
 
 .recent-label {
@@ -17,14 +16,12 @@
   display: inline-block;
 }
 
+.convert-date,
 .exchange-rate {
   opacity: 0.5;
-}
-
-.convert-date {
-  opacity: 0.5;
   margin-top: 8px;
-  font-size: 12px;
+  font-size: 14px;
+  display: block;
 }
 
 .repeat-icon {

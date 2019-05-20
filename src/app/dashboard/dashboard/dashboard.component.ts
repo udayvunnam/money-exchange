@@ -1,11 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DashboardService } from '../dashboard.service';
-import {
-  Currency,
-  ConvertHistory,
-  ConvertOutput,
-  ConvertInput
-} from 'src/app/shared/models';
+import { Currency, ConvertHistory, ConvertOutput, ConvertInput } from 'src/app/shared/models';
 
 @Component({
   selector: 'mx-dashboard',
@@ -13,33 +8,39 @@ import {
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
-  convertInput: ConvertInput = {};
+  repeatConversion: ConvertInput = {};
   currencyList: Currency[] = [];
   convertOutput: ConvertOutput;
-  convertionHistory: ConvertHistory[];
+  conversionHistory: ConvertHistory[];
 
   constructor(private dashboardService: DashboardService) {}
 
   ngOnInit() {
+    this.getCurrencyList();
+    this.getPastConversions();
+  }
+
+  getCurrencyList() {
     this.dashboardService.getCurrencies().subscribe(res => {
       this.currencyList = this.transformCurrencies(res);
     });
-    this.dashboardService.getUsage().subscribe(res => {
-      this.convertionHistory = res;
+  }
+
+  getPastConversions() {
+    this.dashboardService.getUsage().subscribe((res: ConvertHistory[]) => {
+      this.conversionHistory = res;
     });
   }
 
   convert(convertInput: ConvertInput) {
-    this.dashboardService
-      .convert(convertInput)
-      .subscribe((convertOutput: ConvertOutput) => {
-        this.convertOutput = convertOutput;
-      });
+    this.dashboardService.convert(convertInput).subscribe((convertOutput: ConvertOutput) => {
+      this.convertOutput = convertOutput;
+      this.getPastConversions();
+    });
   }
 
-  repeat(convertInput: ConvertInput) {
-    this.convertInput = convertInput;
-    window.scroll(0, 0);
+  repeat(conversion: ConvertInput) {
+    this.repeatConversion = conversion;
   }
 
   transformCurrencies(res): Currency[] {
