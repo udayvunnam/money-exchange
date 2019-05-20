@@ -11,7 +11,7 @@ Tech stack:
 - [Angular Material](https://material.angular.io/): Design components and theming
 - [Flex Layout](https://github.com/angular/flex-layout/wiki): Responsive Layout
 - [Netlify](https://www.netlify.com/): Deployment
-- [Money Exchange API](http://localhost:3000/v1): API
+- [Money Exchange API](http://localhost:8080/v1): API
 
 ## Features
 

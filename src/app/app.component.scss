@@ -19,8 +19,7 @@
 }
 
 .body-container {
-  padding: 24px 100px;
-  &.container-small {
-    padding: 24px;
-  }
+  margin: 0 auto;
+  max-width: 780px;
+  padding: 24px;
 }
