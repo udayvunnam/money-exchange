@@ -1,6 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { DashboardService } from '../dashboard.service';
-import { Currency, ConvertHistory } from 'src/app/shared/models';
+import {
+  Currency,
+  ConvertHistory,
+  ConvertOutput,
+  ConvertInput
+} from 'src/app/shared/models';
 
 @Component({
   selector: 'mx-dashboard',
@@ -8,7 +13,9 @@ import { Currency, ConvertHistory } from 'src/app/shared/models';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
-  currencyList: Currency[];
+  convertInput: ConvertInput = {};
+  currencyList: Currency[] = [];
+  convertOutput: ConvertOutput;
   convertionHistory: ConvertHistory[];
 
   constructor(private dashboardService: DashboardService) {}
@@ -20,6 +27,19 @@ export class DashboardComponent implements OnInit {
     this.dashboardService.getUsage().subscribe(res => {
       this.convertionHistory = res;
     });
+  }
+
+  convert(convertInput: ConvertInput) {
+    this.dashboardService
+      .convert(convertInput)
+      .subscribe((convertOutput: ConvertOutput) => {
+        this.convertOutput = convertOutput;
+      });
+  }
+
+  repeat(convertInput: ConvertInput) {
+    this.convertInput = convertInput;
+    window.scroll(0, 0);
   }
 
   transformCurrencies(res): Currency[] {

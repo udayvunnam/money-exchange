@@ -1,13 +1,39 @@
+.convert-container {
+  margin: 32px 0 64px;
+}
+
+.convert-form {
+  max-width: 500px;
+  margin: auto;
+}
+.mat-elevation-z4.convert-form {
+  padding: 64px;
+  border-radius: 4px;
+  background: #fff;
+}
 .amount-input {
   font-size: 18px;
   text-align: center;
 }
 
-.currency-type {
+.mat-form-field {
   min-width: 200px;
   max-width: 200px;
 }
 
-.amount-output {
-  font-size: 18px;
+.convert-btn {
+  width: 200px;
+}
+
+.convert-output {
+  text-align: center;
+  .amount-output {
+    font-size: 32px;
+    font-weight: 300;
+    margin: 0;
+  }
+  .exchange-rate {
+    opacity: 0.5;
+    font-size: 14px;
+  }
 }

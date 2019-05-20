@@ -6,3 +6,27 @@
 .recent-label {
   opacity: 0.7;
 }
+
+.amount {
+  font-size: 32px;
+  font-weight: 300;
+}
+
+.currency-symbol {
+  margin-left: 4px;
+  display: inline-block;
+}
+
+.exchange-rate {
+  opacity: 0.5;
+}
+
+.convert-date {
+  opacity: 0.5;
+  margin-top: 8px;
+  font-size: 12px;
+}
+
+.repeat-icon {
+  margin-left: auto;
+}
