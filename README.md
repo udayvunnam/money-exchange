@@ -1,6 +1,6 @@
 # MoneyExchange
 
-[![npm License](https://github.com/udayvunnam/xng-breadcrumb/blob/master/LICENSE)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/2977f93f-8880-475e-b152-eb618a343cc8/deploy-status)](https://app.netlify.com/sites/moneyexchange/deploys)
 
 PWA for currency conversions in real time and historical usage trends.
 https://moneyexchange.netlify.com
