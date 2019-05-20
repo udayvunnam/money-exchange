@@ -1,6 +1,12 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ConvertHistoryComponent } from './convert-history.component';
+import { DashboardComponent } from '../dashboard.component';
+import { ConvertComponent } from '../convert/convert.component';
+import { SharedModule } from 'src/app/shared/shared.module';
+import { DashboardRoutingModule } from '../../dashboard-routing.module';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { ErrorStateMatcher, ShowOnDirtyErrorStateMatcher } from '@angular/material';
 
 describe('ConvertHistoryComponent', () => {
   let component: ConvertHistoryComponent;
@@ -8,7 +14,9 @@ describe('ConvertHistoryComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ConvertHistoryComponent]
+      declarations: [ConvertHistoryComponent, DashboardComponent, ConvertComponent, ConvertHistoryComponent],
+      imports: [SharedModule, DashboardRoutingModule, NoopAnimationsModule],
+      providers: [{ provide: ErrorStateMatcher, useClass: ShowOnDirtyErrorStateMatcher }]
     }).compileComponents();
   }));
 
