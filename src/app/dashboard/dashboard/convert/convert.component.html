@@ -1,53 +1,49 @@
 <section class="convert-container">
-  <form
-    class="convert-form"
-    [formGroup]="conversionForm"
-    (ngSubmit)="conversionForm.valid && getExchangeRate()"
-    #form="ngForm"
-    ngClass.gt-xs="mat-elevation-z4"
-  >
-    <div fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="16px">
-      <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="32px" fxLayout.lt-md="column">
-        <mat-form-field class="currency-type">
-          <mat-label>From Currency</mat-label>
-          <mat-select formControlName="from">
-            <mat-option *ngFor="let currency of currencyList" [value]="currency.symbol">
-              <span>{{ currency.symbol }}</span> |
-              <small>{{ currency.fullName }}</small>
-            </mat-option>
-          </mat-select>
+  <div class="convert-form" ngClass.gt-xs="mat-elevation-z4">
+    <form [formGroup]="conversionForm" (ngSubmit)="conversionForm.valid && getExchangeRate()" #form="ngForm">
+      <div fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="16px">
+        <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="32px" fxLayout.lt-md="column">
+          <mat-form-field class="currency-type">
+            <mat-label>From Currency</mat-label>
+            <mat-select formControlName="from">
+              <mat-option *ngFor="let currency of currencyList" [value]="currency.symbol">
+                <span>{{ currency.symbol }}</span> |
+                <small>{{ currency.fullName }}</small>
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field class="currency-type">
+            <mat-label>To Currency</mat-label>
+            <mat-select formControlName="to">
+              <mat-option *ngFor="let currency of currencyList" [value]="currency.symbol">
+                <span>{{ currency.symbol }}</span> |
+                <small>{{ currency.fullName }}</small>
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <mat-form-field floatLabel="never" class="amount-input">
+          <input matInput formControlName="value" placeholder="Enter Amount" autocomplete="off" />
         </mat-form-field>
 
-        <mat-form-field class="currency-type">
-          <mat-label>To Currency</mat-label>
-          <mat-select formControlName="to">
-            <mat-option *ngFor="let currency of currencyList" [value]="currency.symbol">
-              <span>{{ currency.symbol }}</span> |
-              <small>{{ currency.fullName }}</small>
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
+        <mat-error>{{ getError(conversionForm, form.submitted) }}</mat-error>
+
+        <button mat-button mat-raised-button type="submit" color="primary" class="convert-btn">
+          CONVERT
+        </button>
+
+        <section *ngIf="convertOutput" class="convert-output">
+          <h1 class="amount-output">
+            {{ convertOutput.convertedValue | number: '1.0-6' }}
+          </h1>
+          <span class="exchange-rate">
+            exchange rate
+            {{ convertOutput.exchangeRate | number: '1.0-6' }}</span
+          >
+        </section>
       </div>
-
-      <mat-form-field floatLabel="never" class="amount-input">
-        <input matInput formControlName="value" placeholder="Enter Amount" autocomplete="off" />
-      </mat-form-field>
-
-      <mat-error>{{ getError(conversionForm, form.submitted) }}</mat-error>
-
-      <button mat-button mat-raised-button type="submit" color="primary" class="convert-btn">
-        CONVERT
-      </button>
-
-      <section *ngIf="convertOutput" class="convert-output">
-        <h1 class="amount-output">
-          {{ convertOutput.convertedValue | number: '1.0-6' }}
-        </h1>
-        <span class="exchange-rate">
-          exchange rate
-          {{ convertOutput.exchangeRate | number: '1.0-6' }}</span
-        >
-      </section>
-    </div>
-  </form>
+    </form>
+  </div>
 </section>

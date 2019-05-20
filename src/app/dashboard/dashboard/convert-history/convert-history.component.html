@@ -1,4 +1,4 @@
-<section class="conversion-history-container" *ngIf="conversionHistory && conversionHistory.length > 0" role="list">
+<section class="conversion-history-container" role="list">
   <h3 matSubheader class="recent-label">Recent conversions</h3>
   <mat-card role="listitem" *ngFor="let conversion of conversionHistory; trackBy: trackByFn" class="history-item">
     <div fxLayout="row" fxLayoutAlign="space-between center">
@@ -37,4 +37,10 @@
       <label class="convert-date">{{ conversion.created | date: 'medium' }}</label>
     </div>
   </mat-card>
+
+  <div class="loader" *ngIf="!conversionHistory">
+    <div class="shimmer"></div>
+    <div class="shimmer"></div>
+    <div class="shimmer"></div>
+  </div>
 </section>
