@@ -43,6 +43,7 @@
             {{ convertOutput.exchangeRate | number: '1.0-6' }}</span
           >
         </section>
+        <mat-progress-bar mode="buffer" *ngIf="conversionProgress"></mat-progress-bar>
       </div>
     </form>
   </div>

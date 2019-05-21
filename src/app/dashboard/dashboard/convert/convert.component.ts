@@ -21,6 +21,7 @@ import { MxValidators } from 'src/app/shared/validators/mx-validators';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ConvertComponent implements OnInit, OnChanges {
+  conversionProgress: boolean;
   @Input() currencyList: Currency[];
   @Input() repeatConversion: ConvertInput;
   @Input() convertOutput: ConvertOutput;
@@ -48,6 +49,7 @@ export class ConvertComponent implements OnInit, OnChanges {
   }
 
   getExchangeRate() {
+    this.conversionProgress = true;
     const convertInput: ConvertInput = {
       from: this.conversionForm.get('from').value,
       to: this.conversionForm.get('to').value,
@@ -64,8 +66,19 @@ export class ConvertComponent implements OnInit, OnChanges {
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes.repeatConversion && changes.repeatConversion.previousValue !== changes.repeatConversion.currentValue) {
-      this.createForm();
+      const repeatData = changes.repeatConversion.currentValue;
+      if (this.conversionForm) {
+        this.conversionForm.setValue({
+          from: repeatData.from,
+          to: repeatData.to,
+          value: repeatData.value
+        });
+      }
       window.scroll(0, 0);
+    }
+
+    if (changes.convertOutput) {
+      this.conversionProgress = false;
     }
   }
 
@@ -73,13 +86,13 @@ export class ConvertComponent implements OnInit, OnChanges {
     let errorMsg: string;
     if (form.invalid && (isSubmitted || form.dirty)) {
       const amount = form.get('value');
-      if (amount.hasError('required')) {
+      if (amount.hasError('required') && (amount.dirty || isSubmitted)) {
         errorMsg = `'Amount' is required`;
-      } else if (amount.hasError('number')) {
+      } else if (amount.hasError('number') && (amount.dirty || isSubmitted)) {
         errorMsg = 'Please enter a valid Amount';
-      } else if (form.get('from').hasError('required')) {
+      } else if (form.get('from').hasError('required') && (form.get('from').dirty || isSubmitted)) {
         errorMsg = `'From Currency' selection is required`;
-      } else if (form.get('to').hasError('required')) {
+      } else if (form.get('to').hasError('required') && (form.get('to').dirty || isSubmitted)) {
         errorMsg = `'To Currency' selection is required`;
       } else if (form.hasError('equal')) {
         errorMsg = 'Conversion between same currencies! Are you sure ?';
