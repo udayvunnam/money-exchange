@@ -4,7 +4,9 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'http://localhost:8080/v1'
+  apiUrl: 'https://api-moneyexchange.herokuapp.com/v1'
+  // use below url if you run api in your local
+  // apiUrl: 'http://localhost:8080/v1'
 };
 
 /*
