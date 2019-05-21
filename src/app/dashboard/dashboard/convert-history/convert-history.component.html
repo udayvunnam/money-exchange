@@ -8,15 +8,16 @@
         fxLayoutGap="48px"
         fxLayoutGap.xs="12px"
         fxLayout.xs="column"
+        class="conversion-item"
       >
         <div class="from-amount">
-          <span class="amount">{{ conversion.value | number: '1.0-6' }}</span>
-          <span class="currency-symbol">{{ conversion.from }}</span>
+          <span class="amount">{{ conversion.value | number: '1.0-6' }}</span
+          >{{ conversion.from }}
         </div>
         <mat-icon>compare_arrows</mat-icon>
         <div class="to-amount">
-          <span class="amount">{{ conversion.convertedValue | number: '1.0-6' }}</span>
-          <span class="currency-symbol"> {{ conversion.to }}</span>
+          <span class="amount">{{ conversion.convertedValue | number: '1.0-6' }}</span
+          >{{ conversion.to }}
         </div>
       </div>
       <button

@@ -2,7 +2,7 @@
   "name": "money-exchange",
   "version": "1.0.0",
   "license": "MIT",
-  "description": "PWA for currency conversions in real time and historical usage trends.",
+  "description": "PWA for currency conversions in real time, exchange rates and historical usage trends.",
   "author": {
     "name": "Uday Vunnam",
     "email": "uday4vunnam@gmail.com"
