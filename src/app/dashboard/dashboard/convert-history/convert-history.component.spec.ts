@@ -14,7 +14,7 @@ describe('ConvertHistoryComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ConvertHistoryComponent, DashboardComponent, ConvertComponent, ConvertHistoryComponent],
+      declarations: [ConvertHistoryComponent, DashboardComponent, ConvertComponent],
       imports: [SharedModule, DashboardRoutingModule, NoopAnimationsModule],
       providers: [{ provide: ErrorStateMatcher, useClass: ShowOnDirtyErrorStateMatcher }]
     }).compileComponents();

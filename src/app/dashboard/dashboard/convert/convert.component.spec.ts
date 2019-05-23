@@ -14,7 +14,7 @@ describe('ConvertComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ConvertComponent, DashboardComponent, ConvertComponent, ConvertHistoryComponent],
+      declarations: [ConvertComponent, DashboardComponent, ConvertHistoryComponent],
       imports: [SharedModule, DashboardRoutingModule, NoopAnimationsModule],
       providers: [{ provide: ErrorStateMatcher, useClass: ShowOnDirtyErrorStateMatcher }]
     }).compileComponents();
@@ -23,6 +23,7 @@ describe('ConvertComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(ConvertComponent);
     component = fixture.componentInstance;
+    component.repeatConversion = {};
     fixture.detectChanges();
   });
 
