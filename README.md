@@ -4,8 +4,9 @@
 
 PWA for currency conversions in real time and historical usage trends.
 https://moneyexchange.netlify.com
+![](https://user-images.githubusercontent.com/20707504/66694103-c50e2480-eccd-11e9-96f5-4a15abe8c316.gif)
 
-Tech stack:
+## Tech stack
 
 - [Angular 7+](https://angular.io): Frontend framework
 - [Angular Material](https://material.angular.io/): Design components and theming
